@@ -10,10 +10,10 @@ const redis = require('async-redis');
 require('dotenv').config();
 
 const PORT = process.env.PORT || 9000;
-const REDIS_PORT = process.env.REDIS_PORT || 6379;
+const REDIS_URL = process.env.REDIS_URL || 6379;
 
 const app = express();
-const client = redis.createClient(REDIS_PORT);
+const client = redis.createClient(REDIS_URL);
 global.client = client;
 
 client.on('connect', () => {
