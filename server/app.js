@@ -7,6 +7,7 @@ const session = require('express-session');
 const bodyParser = require('body-parser');
 const errorHandler = require('errorhandler');
 const redis = require('async-redis');
+const cors = require('cors');
 require('dotenv').config();
 
 const PORT = process.env.PORT || 9000;
@@ -26,6 +27,7 @@ client.on('error', err => {
 
 // All environments
 app.set('port', PORT);
+app.use(cors());
 app.use(morgan('dev'));
 app.use(methodOverride());
 app.use(bodyParser.json());
